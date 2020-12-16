@@ -39,7 +39,7 @@ All of this makes C++ an excellent language to learn for people who need to
 of get maximum performance for their code. And that's why we wrote this
 course!
 
-> ### C++ in this course
+> ## C++ in this course
 > 
 > Over it's lifetime C++ has evolved a lot from the original versions that
 > provided some extensions on top of the C programming language and it has been
@@ -65,7 +65,7 @@ from one form to another for us and it outputs *binary code* that our
 computer can then execute.
 
 
-> #### A compiler for this course
+> ## A compiler for this course
 >
 > We assume that you have a modern C++ compiler available on your system - either
 > the GNU g++ compiler or the LLVM clang++ compilers will do the job very nicely
@@ -87,7 +87,7 @@ editors are actually part of an IDE suite (Integrated Development Environment)
 that will also include full integration with the compiler and the debugger.
 However, setting up these is beyond the scope of this tutorial.
 
-> #### An editor for this course
+> ## An editor for this course
 >
 > We can recommend highly the
 > [Microsoft VS Code](https://code.visualstudio.com/) editor
@@ -125,12 +125,21 @@ $ ./hello
 hello, world
 $
 ~~~
-{: .source}
+{: .language-bash}
 
 If you managed to get that to work then you have successfully started your journey
 as a C++ programmer. Well done!
 
 Now let's go on to look more systematically at some of the things that make up
 the C++ programing language.
+
+## C++ Resources
+
+Here are some useful resources for C++ programmers:
+
+| Resource | Link | Description |
+|----------|------|-------------|
+| Cpp Reference | <https://en.cppreference.com/w/> | Essential reference to the C++ standard and standard library |
+| C++ Standards | <https://isocpp.org/> | The C++ Standards Organisaion, but in itself a great source of resources about C++ |
 
 {% include links.md %}
