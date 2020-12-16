@@ -19,6 +19,23 @@ $(".solution").each(function() {
 });
 
 
+$(".foldable").click(function(event) {
+    var trigger = $(event.target).has(".fold-unfold").length > 0
+               || $(event.target).filter(".fold-unfold").length > 0;
+    if (trigger) {
+        $(">div", this).toggle(400);
+        // $(">h2>span.fold-unfold", this).toggleClass("glyphicon-collapse-down glyphicon-collapse-up");
+        // event.stopPropagation();
+    }
+});
+$(".foldable").each(function() {
+    // https://stackoverflow.com/questions/10061414/changing-width-property-of-a-before-css-selector-using-jquery
+    // not working yet....
+    var pseudoElementContent = window.getComputedStyle($('#element')[0], ':before').getPropertyValue('content')
+    // $(">*:not(h2)", this).toggle();
+    // $('#element').addClass('some-class');
+});
+
 // Handle searches.
 // Relies on document having 'meta' element with name 'search-domain'.
 function google_search() {
