@@ -7,8 +7,8 @@ questions:
 objectives:
 - "Know about `auto` and `decltype`."
 keypoints:
-- "`auto` basically avoid you the error-prone typing of complex long type names."
-- "A collateral benefit is that it is easier to modify some types repeated all over the code."
+- "The new keyword `auto` avoid you the error-prone typing of complex long type names."
+- "A collateral benefit is that the code is more generic."
 - "Yet, do not overuse `auto`, because the types contribute to the readability of the code."
 ---
 
@@ -168,7 +168,9 @@ int main()
 ~~~
 {: .language-cpp}
 
-Note : this only works if the declaration and the definition (body) of the function are in the same file (i.e. inline or template functions).
+> This only works if the declaration and the definition (body) of the function are in the same file
+> (i.e. inline or template functions).
+{: .callout}
 
 # Soon in C++20 : `auto` for function arguments
 
