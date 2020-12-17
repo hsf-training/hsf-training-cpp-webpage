@@ -4,7 +4,7 @@
 std::vector<int> scale( std::vector<int> col, int factor )
  {
   for ( unsigned i = 0 ; i < col.size() ; ++i )
-   { collate[i] *= factor ; }
+   { col[i] *= factor ; }
   return col ;
  }
 

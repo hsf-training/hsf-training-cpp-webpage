@@ -20,3 +20,5 @@ WHAT WE DO ADRESS IN THIS MODULE
 * range-based loops
 * auto
 
+PROPOSALS
+* through github issues

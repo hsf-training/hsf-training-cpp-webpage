@@ -1,5 +1,5 @@
 ---
-title: "Functions (UNDER WORK)"
+title: "Functions"
 teaching: 10
 exercises: 0
 questions:
@@ -9,10 +9,11 @@ questions:
 objectives:
 - "Know about ordinary C++ functions."
 - "Know about references and const references."
-- "Know about RVO and structured bindings."
+- "Be aware of return value optimization and structured bindings."
 keypoints:
 - "Const references avoid the cost of the copy for input arguments."
 - "You should not be afraid any more of returning big results."
+- "You should not be afraid any more of returning a bunch of results."
 ---
 
 {% include links.md %}
@@ -92,14 +93,24 @@ This pratice is not worth for small builtin types such as `int`, `double`, or th
 
 We have seen that one can pass a variable as reference to a function, and the function modify it : it was the old way to proceed when you have several results, or big ones you want to avoid to duplicate.
 
-Nowadays, whenever you can, simply return the result by value, as would do a methematical function.
+Nowadays, whenever you can, simply return the result by value, as would do a mathematical function.
 
 ~~~
 {% include includelines filename='code/06-return-by-value.cpp' start=3 stop=9 %}
 ~~~
 {: .language-cpp}
 
-Do not be afraid of returning a big value, object, array, etc. Most of the time, if not all the time, the compiler will avoid the copy and drectly write the reslt in the external receiving variable.
+Do not be afraid of returning a big value, object, array, etc. Most of the time, if not every time, the compiler will avoid the copy and directly write the result in the client memory area. This is called RVO (Return Value Optimization).
 
 NEVER return a reference, unless you are a C++ great master !
 
+## Returning a composite result
+
+Even if you have multiple results, it is more and more easy to return them all together, using a `std::tuple`. 
+
+~~~
+{% include includelines filename='code/06-return-tuple.cpp' start=4 stop=28 %}
+~~~
+{: .language-cpp}
+
+The example above will be even simpler when we will introduce `auto` later on.
