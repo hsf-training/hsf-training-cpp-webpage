@@ -4,7 +4,8 @@
 auto accumulate( const auto & col, auto init )
  {
   auto res = init ;
-  for ( auto elem : col ) { res += elem ; }
+  for ( auto elem : col )
+   { res += elem ; }
   return res ;
  }
 

@@ -1,83 +1,105 @@
 ---
 title: "Functions (UNDER WORK)"
-teaching: 0
+teaching: 10
 exercises: 0
 questions:
-- "How to define a function"
+- "How to define a function ?"
+- "What are the different ways to pass input arguments ?"
+- "What are the different ways to get back the results ?"
 objectives:
-- "Know about basic C++ operators specificities."
+- "Know about ordinary C++ functions."
+- "Know about references and const references."
+- "Know about RVO and structured bindings."
 keypoints:
-- "Be careful with increment operators, which have a left-side and a right-side version."
-- "Prefer using explicit parentheses over relying on complex precedence rules."
-- "There is no predefined power operator."
+- "Const references avoid the cost of the copy for input arguments."
+- "You should not be afraid any more of returning big results."
 ---
 
 {% include links.md %}
 
-# Binary & Assignment Operators
+# Different examples of input arguments and output results
+
+## With return type
 
 ~~~
-int i = 1 + 4 - 2 ; // 3
-i *= 3; // 9
-i /= 2; // 4
-i = 23 % i; // modulo => 3
-~~~
-{: .language-cpp}
-
-# Increment / Decrement
-
-~~~
-int i = 0; i++; // i = 1
-int j = ++i;    // i = 2, j = 2
-int k = i++;    // i = 3, k = 2
-int l = --i;    // i = 2, l = 2
-int m = i--;    // i = 1, m = 2
+int square(int a) {
+  return a*a;
+}
 ~~~
 {: .language-cpp}
 
-Be careful with those operators !
-
-# Bitwise and Assignment Operators
+## Multiple parameters
 
 ~~~
-int i = 0xee & 0x55;  // 0x44
-i |= 0xee;            // 0xee
-i ^= 0x55;            // 0xbb
-int j = ~0xee;        // 0xffffff
-int k = 0x1f << 3;    // 0x78
-int l = 0x1f >> 2;    // 0x7
+int mult(int a, int b) {
+  return a*b;
+ }
 ~~~
 {: .language-cpp}
 
-# Boolean Operators
+## No parameter
 
 ~~~
-bool a = true;
-bool b = false;
-bool c = a && b;    // false
-bool d = a || b;    // true
-bool e = !d;        // false
+void hello() {
+  std::cout << "Hello World" << std::endl;
+}
 ~~~
 {: .language-cpp}
 
-# Comparison Operators
+## No return
 
 ~~~
-bool a = (3 == 3);  // true
-bool b = (3 != 3);  // false
-bool c = (4 < 4);   // false
-bool d = (4 <= 4);  // true
-bool e = (4 > 4);   // false
-bool f = (4 >= 4);  // true
+void log(char* msg) {
+  std::cout << msg << std::endl;
+}
 ~~~
 {: .language-cpp}
 
-# Precedences
+# Different ways to exchange arguments
+
+## By value
+
+Each time the function is called, the value given as argument is duplicated within the function. If the function modify the argument, only the internal copy is modified, not the original (which is often what we want). The duplication may take time when the input argument is big.
 
 ~~~
-c &= 1+(++b)|(a--)*4%5^7; // ???
+{% include includelines filename='code/06-arg-by-value.cpp' start=3 stop=16 %}
 ~~~
 {: .language-cpp}
 
-Do not rely on complex precedence rules ! Use parenthesis.
+## By reference
+
+If you want the function to modify the original value, you must declare the argument as a reference (postfix with `&`). 
+
+~~~
+{% include includelines filename='code/06-arg-by-reference.cpp' start=3 stop=8 %}
+~~~
+{: .language-cpp}
+
+## By constant reference
+
+If you do want the function to modify the original value, but you would like to avoid the cost of the copy, you can declare the argument as a constant reference (prefix with `const` and postfix with `&`). 
+
+~~~
+{% include includelines filename='code/06-arg-by-const-reference.cpp' start=9 stop=16 %}
+~~~
+{: .language-cpp}
+
+This pratice is not worth for small builtin types such as `int`, `double`, or the standard libray iterators, which are usually passed by value.
+
+# Different ways to return results
+
+## By value... and only by value !
+
+We have seen that one can pass a variable as reference to a function, and the function modify it : it was the old way to proceed when you have several results, or big ones you want to avoid to duplicate.
+
+Nowadays, whenever you can, simply return the result by value, as would do a methematical function.
+
+~~~
+{% include includelines filename='code/06-return-by-value.cpp' start=3 stop=9 %}
+~~~
+{: .language-cpp}
+
+Do not be afraid of returning a big value, object, array, etc. Most of the time, if not all the time, the compiler will avoid the copy and drectly write the reslt in the external receiving variable.
+
+NEVER return a reference, unless you are a C++ great master !
 

@@ -3,7 +3,8 @@
 
 void scale( std::vector<int> & col, int factor )
  {
-  for ( auto & elem : col ) { elem *= factor ; }
+  for ( auto & elem : col )
+   { elem *= factor ; }
  }
 
 int main()

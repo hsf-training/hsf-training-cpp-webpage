@@ -12,6 +12,8 @@ keypoints:
 - "There is no predefined power operator."
 ---
 
+{% include links.md %}
+
 # Binary & Assignment Operators
 
 ~~~
@@ -78,6 +80,4 @@ c &= 1+(++b)|(a--)*4%5^7; // ???
 {: .language-cpp}
 
 Do not rely on complex precedence rules ! Use parenthesis.
-
-{% include links.md %}
 

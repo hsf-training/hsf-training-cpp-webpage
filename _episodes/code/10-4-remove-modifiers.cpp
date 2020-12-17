@@ -4,7 +4,8 @@
 int accumulate( const std::vector<int> & col, const int & init )
  {
   auto res = init ;
-  for ( auto elem : col ) { res += elem ; }
+  for ( auto elem : col )
+   { res += elem ; }
   return res ;
  }
 
