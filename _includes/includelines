@@ -5,10 +5,10 @@
 {% endcapture %}
 {%- assign lines = filecontent | newline_to_br | split: '<br />' -%}
 {%- for iline in (0..lines.size) -%}
-{%- if iline >= {{include.start}} and iline <= {{include.end}} -%}
+{%- if iline >= {{include.start}} and iline <= {{include.stop}} -%}
 {{lines[iline] | rstrip | strip_newlines }}
 {%- endif -%}
-{%- if iline >= {{include.start}} and iline < {{include.end}} -%}
+{%- if iline >= {{include.start}} and iline < {{include.stop}} -%}
 {{newline}}
 {%- endif -%}
 {%- endfor -%}

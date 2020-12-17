@@ -1,64 +1,20 @@
-{% comment %}{% raw %}<!--
-Includes a method snippet from an include file of C / Java type language.
-
-From hblok
-https://github.com/hblok/rememberjava/blob/master/_includes/includelines
-GPL3
-
-Usage:
-  {% include includemethod filename=PATH method=STRING [before=INT] [after=INT] %}
-
-  filename: path to file under _includes
-  method: method or other string to match
-  before: lines to include before the start of the method
-  after: lines to include after the method's final closing bracket
-
-  Includes lines starting at where the string 'method' is found, and continues
-  until a matching curly bracket is found. The before / after arguments can be
-  used to include further lines.
-
-Example:
-
-  {% include includemethod filename='src/HelloWorld.java' method='test()' before=2 after=1 %}
-  
--->{% endraw %}{% endcomment %}{% capture unused %}
-
-{% capture filecontent %}
-    {% include {{include.filename}} %}
+{%- capture filecontent -%}
+{%- include {{include.filename}} -%}
+{%- endcapture -%}
+{% capture newline %}
 {% endcapture %}
-
-{% assign start = 0 %}
-{% assign braketlevel = 0 %}
-
-{% assign lines = filecontent | newline_to_br | split: '<br />' %}
-{% for line in lines %}
-    {% if line contains {{include.method}} %}
-       {% assign start = forloop.index | minus: 1 %}
-    {% endif %}
-
-    {% if start > 0 %}
-        {%if line contains '{' %}
-           {% assign braketlevel = braketlevel | plus: 1 %}
-        {% endif %}
-
-        {% if line contains '}' %}
-            {% assign braketlevel = braketlevel | minus: 1 %}
-        {% endif %}
-     
-        {% if braketlevel == 0 %}
-            {% assign count = forloop.index  | minus: start %}
-	    {% break %}
-        {% endif %}
-   {% endif %}
-{% endfor %}
-
-{% if include.before %}
-   {% assign start = start | minus: include.before %}
-   {% assign count = count | plus: include.before %}
-{% endif %}
-
-{% if include.after %}
-   {% assign count = count | plus: include.after %}
-{% endif %}
-
-{% endcapture %}{% assign unused = nil %}{% for line in lines offset:start limit:count %}{{ line }}{% endfor %}
+{%- assign lines = filecontent | newline_to_br | split: '<br />' -%}
+{%- assign includethis = false -%}
+{%- for line in lines -%}
+  {%- if line contains {{include.startstring}} -%}
+    {%- assign includethis = true -%}
+  {%- endif -%}
+  {%- if includethis -%}
+    {%- if line contains {{include.stopstring}} -%}
+      {%- assign includethis = false -%}
+      {{line | rstrip | strip_newlines}}
+    {%- else -%}
+      {{line | rstrip | strip_newlines}}{{newline}}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}

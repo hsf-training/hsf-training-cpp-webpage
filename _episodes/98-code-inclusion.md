@@ -31,7 +31,14 @@ This is a full include:
 This is a partial include with line numbers
 
 ~~~
-{% include includelines filename='code/scripts.py' start=3 end=4 %}
+{% include includelines filename='code/scripts.py' start=3 stop=4 %}
+~~~
+{: .language-python}
+
+You can also include from a string to a string:
+
+~~~
+{% include includemethod filename='code/scripts.py' startstring='def' stopstring='print' %}
 ~~~
 {: .language-python}
 
