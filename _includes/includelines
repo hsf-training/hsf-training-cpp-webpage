@@ -1,5 +1,5 @@
 {%- capture filecontent -%}
-{%- include {{include.filename}} -%}
+{%- include_relative {{include.filename}} -%}
 {%- endcapture -%}
 {% capture newline %}
 {% endcapture %}
