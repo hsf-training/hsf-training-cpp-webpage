@@ -1,6 +1,6 @@
 ---
 title: "Auto & decltype"
-teaching: 0
+teaching: 10
 exercises: 0
 questions:
 - "Should I repeat again and again the obvious type of everything ?"
