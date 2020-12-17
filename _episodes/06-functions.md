@@ -3,7 +3,7 @@ title: "Functions (UNDER WORK)"
 teaching: 0
 exercises: 0
 questions:
-- "What is specific in basic C++ operators ?"
+- "How to define a function"
 objectives:
 - "Know about basic C++ operators specificities."
 keypoints:

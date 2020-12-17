@@ -31,92 +31,36 @@ It is recommended to give an initial value to any variabe you declare. If the ty
 Rather than this:
 
 ~~~
-#include <iostream>
-#include <vector>
-
-int main()
- {
-  std::vector<int> col = { 1, 2, 3, 4, 5 } ;
-  
-  int first = col[0] ;
-  int sz = col.size() ; // bug ? unsigned to signed
-  int sum = 0 ;
-  for ( int elem : col ) { sum += elem ; }
-  
-  std::cout << "first: " << first <<std::endl ;
-  std::cout << "mean: " << sum/sz << std::endl ;
- }
+{% include_relative code/10-1-noauto-variables.cpp %}
 ~~~
 {: .language-cpp}
 
 Write this:
 
 ~~~
-#include <iostream>
-#include <vector>
-
-int main()
- {
-  std::vector<int> col = { 1, 2, 3, 4, 5 } ;
-  
-  auto first = col[0] ;
-  auto sz = col.size() ;
-  int sum = 0 ;
-  for ( auto elem : col ) { sum += elem ; }
-  
-  std::cout << "first: " << first <<std::endl ;
-  std::cout << "mean: " << sum/sz << std::endl ;
- }
+{% include_relative code/10-2-auto-variables.cpp %}
 ~~~
 {: .language-cpp}
 
-In the latter, no risk to make an error with the type of `sz`, and if you change your collection from `std::vector<int>` to `std::vector<double>`, no need to change the declaration of `first` or `elem`.
+In the latter, no risk to make an error with the type of `sz`, and if you change your array from integers to doubles, no need to change the declaration of `first` or `elem`.
 
-Yet, what to do with `sum`, that we want to initiate with the value `0` (of type `int`), but that should be of the same type as `first` (possibly `double`) ?
+Yet, what to do with `sum`, which we want to initiate with the value `0` (of type `int`), but that should be of the same type as `first` (possibly `double`) ?
 
-# `decltype` keyword when initializing a new variable
+# New `decltype` keyword
 
 If you do not have a valid initial value for your new variable, you can rely on  `decltype` to reuse the type of another variable.
 
 ~~~
-#include <iostream>
-#include <vector>
-
-int main()
- {
-  std::vector<int> col = { 1, 2, 3, 4, 5 } ;
-  
-  auto first = col[0] ;
-  auto sz = col.size() ;
-  decltype(first) sum = 0 ;
-  for ( auto elem : col ) { sum += elem ; }
-  
-  std::cout << "first: " << first <<std::endl ;
-  std::cout << "mean: " << sum/sz << std::endl ;
- }
+{% include_relative code/10-3-decltype-variables.cpp %}
 ~~~
 {: .language-cpp}
 
-# `auto` remove any `const` or `&`
+# Keyword `auto` remove any `const` or `&`
 
 Be aware that `auto` gets rid of any `const` or `&` modifier to the type of the original value, which is what you expect in most of the cases. In the example below, we obviously do not want `res` to be of type `const int &`.
 
 ~~~
-#include <iostream>
-#include <vector>
-
-int accumulate( const std::vector<int> & col, const int & init )
- {
-  auto res = init ;
-  for ( auto elem : col ) { res += elem ; }
-  return res ;
- }
-
-int main()
- {
-  std::vector<int> col = { 1, 2, 3, 4, 5 } ;
-  std::cout << accumulate(col,0) << std::endl ;
- }
+{% include_relative code/10-4-remove-modifiers.cpp %}
 ~~~
 {: .language-cpp}
 
@@ -127,44 +71,16 @@ If you want to preserve the possible `const` and/or `&` from the initial value, 
 On the contrary, you must sometimes add `const` and/or `&` to a deduced type which lacks those modifiers. For example, if you want to modify the elements of some collection. In the example below, notice the `auto & elem`.
 
 ~~~
-#include <iostream>
-#include <vector>
-
-void scale( std::vector<int> & col, int factor )
- {
-  for ( auto & elem : col ) { elem *= factor ; }
- }
-
-int main()
- {
-  std::vector col = { 1, 2, 3, 4, 5 } ;
-  scale(col,2) ;
-  auto first = col[0] ;
-  std::cout << first << std::endl ;
- }
+{% include_relative code/10-5-add-modifiers.cpp %}
 ~~~
 {: .language-cpp}
 
-# `auto` as a return type
+# Keyword `auto` as a return type
 
 The compiler can also deduce the return type of a function from the `return` instructions within the body of the function. This also works with several `return` instructions, provided they all return a value of the same type.
 
 ~~~
-#include <iostream>
-#include <vector>
-
-auto accumulate( const std::vector<int> & col, int init )
- {
-  auto res = init ;
-  for ( auto elem : col ) { res += elem ; }
-  return res ;
- }
-
-int main()
- {
-  std::vector<int> col = { 1, 2, 3, 4, 5 } ;
-  std::cout << accumulate(col,0) << std::endl ;
- }
+{% include_relative code/10-6-auto-return.cpp %}
 ~~~
 {: .language-cpp}
 
@@ -177,21 +93,7 @@ int main()
 Logically enough, we should be able, soon, to use `auto` for function arguments.... Actually, this is hiding templates, and as above, it only works for functions which have their declaration and description in the same file.
 
 ~~~
-#include <iostream>
-#include <vector>
-
-auto accumulate( const auto & col, auto init )
- {
-  auto res = init ;
-  for ( auto elem : col ) { res += elem ; }
-  return res ;
- }
-
-int main()
- {
-  std::vector<int> col = { 1, 2, 3, 4, 5 } ;
-  std::cout << accumulate(col,0) << std::endl ;
- }
+{% include_relative code/10-7-auto-arguments.cpp %}
 ~~~
 {: .language-cpp}
 
