@@ -1,30 +1,14 @@
-{% comment %}{% raw %}<!--
-Includes the specified lines from an include file.
-
-From hblok
-https://github.com/hblok/rememberjava/blob/master/_includes/includelines
-GPL3
-
-Usage:
-  {% include includelines filename=PATH start=INT count=INT %}
-
-From hblok
-https://github.com/hblok/rememberjava/blob/master/_includes/includelines
-GPL3
-  filename: path to file under _includes
-  start: first line to include, starting at 1
-  count: number of lines to include
-
-Example:
-
-  {% include includelines filename='src/HelloWorld.java' start=10 count=5 %}
-  
--->{% endraw %}{% endcomment %}
-
-{% capture filecontent %}
-{% include {{include.filename}} %}
+{%- capture filecontent -%}
+{%- include {{include.filename}} -%}
+{%- endcapture -%}
+{% capture newline %}
 {% endcapture %}
-
-{% assign lines = filecontent | newline_to_br | split: '<br />' %}
-
-{% for line in lines offset:{{include.start}} limit:{{include.count}} %}{{ line }}{% endfor %}
+{%- assign lines = filecontent | newline_to_br | split: '<br />' -%}
+{%- for iline in (0..lines.size) -%}
+{%- if iline >= {{include.start}} and iline <= {{include.end}} -%}
+{{lines[iline] | rstrip | strip_newlines }}
+{%- endif -%}
+{%- if iline >= {{include.start}} and iline < {{include.end}} -%}
+{{newline}}
+{%- endif -%}
+{%- endfor -%}

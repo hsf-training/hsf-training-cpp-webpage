@@ -28,19 +28,12 @@ This is a full include:
 {: .language-python}
 
 
-This is a partial include with line numbers base on the solution found [here](https://hblok.net/blog/posts/2016/10/23/jekyll-include-partial-snippets-of-code/),
-but it doesn't have the carpentry style
+This is a partial include with line numbers
 
-{% highlight python %}
-{% include includelines filename='code/scripts.py' start=8 count=2 %}
-{% endhighlight %}
-
-This is a carpentry style include, but it has issues with blank lines which I am
-not able to understand just yet.
-
-```python
-{% include includelines filename='code/scripts.py' start=8 count=2 %}
-```
+~~~
+{% include includelines filename='code/scripts.py' start=3 end=4 %}
+~~~
+{: .language-python}
 
 > ## Disabling all of this
 > If we decide against using partial includes as above or find a better solution
