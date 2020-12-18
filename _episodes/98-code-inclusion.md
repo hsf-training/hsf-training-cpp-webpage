@@ -20,28 +20,15 @@ keypoints:
 
 This is a full include:
 
-~~~
-{% include_relative code/scripts.py %}
-~~~
-{: .language-python}
-
+{% include includecpp filename='code/hello.cpp' highlight='cpp' %}
 
 This is a partial include with line numbers
 
-~~~
-{% include includelines filename='code/scripts.py' start=3 stop=4 %}
-~~~
-{: .language-python}
+{% include includecpplines filename='code/hello.cpp' start=4 stop=7 %}
 
 You can also include from a string to a string:
 
-~~~
-{% include includemethod filename='code/scripts.py' startstring='def' stopstring='print' %}
-~~~
-{: .language-python}
-
-{% include includecpplines filename='code/hello.cpp' start=4 stop=7 %}
-
+{% include includecppmethod filename='code/hello.cpp' startstring='main()' stopstring='}' %}
 
 > ## Disabling all of this
 > If we decide against using partial includes as above or find a better solution
