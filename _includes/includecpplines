@@ -1,0 +1,6 @@
+<div class="language-cpp highlighter-rouge" style="margin-bottom: 5px">
+{% highlight cpp %}
+{% include includelines filename=include.filename start=include.start stop=include.stop %}
+{% endhighlight %}
+</div>
+<div style="text-align: center; margin-bottom: 10px"><a href="https://github.com/hsf-training/hsf-training-cpp-webpage/blob/gh-pages/_episodes/{{include.filename}}">Get the full file: {{include.filename}}</a></div>
