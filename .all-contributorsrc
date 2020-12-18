@@ -3,12 +3,21 @@
     "README.md",
     "_includes/authors.html"
   ],
-  "projectName": "test-module",
+  "projectName": "hsf-training-cpp-webpage",
   "projectOwner": "hsf-training",
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true,
   "contributors": [
+    {
+      "login": "chavid",
+      "name": "David Chamont",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4421289?v=4",
+      "profile": "https://github.com/chavid",
+      "contributions": [
+        "content"
+      ]
+    }
   ],
   "contributorsPerLine": 7
 }
