@@ -7,9 +7,8 @@ questions:
 objectives:
 - "Include external code"
 keypoints:
-- "Put your code snippets in `_includes/code/`"
-- "You can use `{% include path %}` to include an external file at any point"
-- "Partial includes are a bit trickier unfortunately."
+- "Put your code snippets in `_episodes/code/`"
+- "There are three different ways to include code."
 ---
 
 > ## Code includes
@@ -29,12 +28,6 @@ This is a partial include with line numbers
 You can also include from a string to a string:
 
 {% include includecppmethod filename='code/hello.cpp' startstring='main()' stopstring='}' %}
-
-> ## Disabling all of this
-> If we decide against using partial includes as above or find a better solution
-> please remove `includelines` and `includemethods` from the `_includes`
-> directory.
-{: .callout}
 
 {% include links.md %}
 
