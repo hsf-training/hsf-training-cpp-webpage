@@ -1,5 +1,5 @@
 ---
-title: "Auto & decltype"
+title: "Type inference"
 teaching: 10
 exercises: 0
 questions:
@@ -30,17 +30,11 @@ It is recommended to give an initial value to any variabe you declare. If the ty
 
 Rather than this:
 
-~~~
-{% include_relative code/10-1-noauto-variables.cpp %}
-~~~
-{: .language-cpp}
+{% include includecpp filename='code/TypeInference/noauto-variables.cpp' highlight='cpp' %}
 
 Write this:
 
-~~~
-{% include_relative code/10-2-auto-variables.cpp %}
-~~~
-{: .language-cpp}
+{% include includecpp filename='code/TypeInference/auto-variables.cpp' highlight='cpp' %}
 
 In the latter, no risk to make an error with the type of `sz`, and if you change your array from integers to doubles, no need to change the declaration of `first` or `elem`.
 
@@ -50,19 +44,13 @@ Yet, what to do with `sum`, which we want to initiate with the value `0` (of typ
 
 If you do not have a valid initial value for your new variable, you can rely on  `decltype` to reuse the type of another variable.
 
-~~~
-{% include_relative code/10-3-decltype-variables.cpp %}
-~~~
-{: .language-cpp}
+{% include includecpp filename='code/TypeInference/decltype-variables.cpp' highlight='cpp' %}
 
 # Keyword `auto` remove any `const` or `&`
 
 Be aware that `auto` gets rid of any `const` or `&` modifier to the type of the original value, which is what you expect in most of the cases. In the example below, we obviously do not want `res` to be of type `const int &`.
 
-~~~
-{% include_relative code/10-4-remove-modifiers.cpp %}
-~~~
-{: .language-cpp}
+{% include includecpp filename='code/TypeInference/remove-modifiers.cpp' highlight='cpp' %}
 
 If you want to preserve the possible `const` and/or `&` from the initial value, use `decltype` instead of `auto`.
 
@@ -70,19 +58,13 @@ If you want to preserve the possible `const` and/or `&` from the initial value, 
 
 On the contrary, you must sometimes add `const` and/or `&` to a deduced type which lacks those modifiers. For example, if you want to modify the elements of some collection. In the example below, notice the `auto & elem`.
 
-~~~
-{% include_relative code/10-5-add-modifiers.cpp %}
-~~~
-{: .language-cpp}
+{% include includecpp filename='code/TypeInference/add-modifiers.cpp' highlight='cpp' %}
 
 # Keyword `auto` as a return type
 
 The compiler can also deduce the return type of a function from the `return` instructions within the body of the function. This also works with several `return` instructions, provided they all return a value of the same type.
 
-~~~
-{% include_relative code/10-6-auto-return.cpp %}
-~~~
-{: .language-cpp}
+{% include includecpp filename='code/TypeInference/auto-return.cpp' highlight='cpp' %}
 
 > This only works if the declaration and the definition (body) of the function are in the same file
 > (i.e. inline or template functions).
@@ -92,9 +74,6 @@ The compiler can also deduce the return type of a function from the `return` ins
 
 Logically enough, we should be able, soon, to use `auto` for function arguments.... Actually, this is hiding templates, and as above, it only works for functions which have their declaration and description in the same file.
 
-~~~
-{% include_relative code/10-7-auto-arguments.cpp %}
-~~~
-{: .language-cpp}
+{% include includecpp filename='code/TypeInference/auto-arguments.cpp' highlight='cpp' %}
 
 If you look at the final implementation of `accumulate` above, you will probably agree that too much `auto` makes the code probably more generic, but also certainly less readable.

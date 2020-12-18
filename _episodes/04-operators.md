@@ -1,6 +1,6 @@
 ---
 title: "Basic C++ operators"
-teaching: 0
+teaching: 10
 exercises: 0
 questions:
 - "What is specific in basic C++ operators ?"
