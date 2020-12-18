@@ -13,6 +13,7 @@ objectives:
 keypoints:
 - "C++ can assign fixed sized collections as arrays."
 - "C++ can manage variable sized collections as vectors of objects."
+- "For vectors, data elements can be added and removed, as well as updated."
 ---
 
 ## N.B.
@@ -91,7 +92,8 @@ Note that arrays are always a fixed size in C++.
 >
 > `four_vector.at(3)`
 > 
-> will access the third element.
+> will access the third element, but will fail (throwing an exception - more on them latter) if the
+> third element wasn't valid.
 >
 > If you needed to know the number of elements in an array, this code will return that value to you:
 >
@@ -103,7 +105,7 @@ Note that arrays are always a fixed size in C++.
 > Blah blah blah
 {: .challenge}
 
-## Fixed Size Containers: Vectors
+## Variable Size Containers: Vectors
 
 Arrays are great to use when the data size is known up-front. However, in many cases
 we might not know how large a container we need at the beginning. In this case
@@ -122,7 +124,10 @@ This looks very like our array code above and one of the nice things about these
 - Instead of including the `array` header, this time we use `vector`.
 - When we define our vector we don't need to give the size, as this is mutable.
   - In this case, we initialised the vector with 4 elements the size of the vector *is* 4.
-- Accessing the elements of a vector uses the same `[]` notation as arrays
+- Accessing the elements of a vector uses the same `[]` notation as arrays.
+  - Vectors also have the methods `front()` and `back()` that access the start and the end
+  of the container.
+- The size of the vector is returned by `size()`, just like it was for an array.
 
 Compiling and running the code produces the expected results:
 
@@ -131,6 +136,8 @@ $ g++ --std=c++17 -Wall vector-basic.cpp -o vector-basic
 $ ./vector-basic
 This n-vector has time component -10
 This n-vector now has time component 7.5
+The first element of the vector is 3 and the last is 7.5
+The vector size is 4
 $
 ~~~
 {: .language-bash}
@@ -166,7 +173,7 @@ If you need to add an element to an arbitrary position in a vector then you can 
 {: .language-cpp}
 
 Here we used the method `begin()` to get the start of the vector and you can see
-with the second insert that adding and subtracting values from this starting point
+with the second `insert` that adding values from this starting point
 work as you would expect (`begin()+3`, for example, is the 4th element position).
 
 ~~~
@@ -179,12 +186,12 @@ The second vector element is 200 and the size is 5
 
 > ## Iterator arithmetic
 >
-> Formally in C++ the `vector<TYPE>.begin()` method returns what is called
+> Formally in C++ the vector `v.begin()` method returns what is called
 > an *iterator* that can be used to identify a position inside a container.
 > Adding and subtracting then moves the access point up and down the
 > vector, respectively, e.g.,
 >
-> `auto second = v.begin()+1`
+> `auto second_element = v.begin()+1`
 >
 > Just be careful that you don't try to insert into an invalid place in the
 > vector as bad things will happen, i.e., inserting into a location *before
@@ -198,19 +205,107 @@ The second vector element is 200 and the size is 5
 >
 > `v.push_back(VALUE)`
 >
-> Note that `vector<TYPE>.end()` is used a lot in C++ and returns the position in the
+> Note that `v.end()` is used a lot in C++ and returns the position in the
 > container *one step beyond the last valid value*. (Thus in loops the comparison is always
 > *less than*: `still_valid < v.end()`.)
 {: .callout}
 
+> ## EXERCISE FOR VECTORS HERE
+>
+> Blah blah blah
+{: .challenge}
+
 #### Deleting
 
+If you want to delete the final element of the vector the `pop_back()` method will
+do this. Note this method returns nothing, i.e., it's a `void` function in C++.
 
+~~~
+{% include_relative code/03-arrays-and-vectors/vector-pop-back.cpp %}
+~~~
+{: .language-cpp}
 
+~~~
+$ g++ --std=c++17 -Wall vector-pop-back.cpp -o vector-pop-back
+$ ./vector-pop-back
+After pop the last vector element is -2 and the size is 2
+~~~
+{: .language-bash}
+
+And to delete an arbitrary position, use the iterator position that we
+saw above with `erase()`.
+
+~~~
+{% include_relative code/03-arrays-and-vectors/vector-erase.cpp %}
+~~~
+{: .language-cpp}
+
+~~~
+$ g++ --std=c++17 -Wall vector-erase.cpp -o vector-erase
+$ ./vector-erase
+After single erase the third vector element is -4 and the size is 4
+After a block erase the vector size is 2
+~~~
+{: .language-bash}
+
+Here we illustrated two ways to use `erase`, first with a single element
+and then with a range where all the elements between the starting
+point and *before* the end point are removed.
+
+If you want to delete all of the current entries in a vector then use
+the `clear()` method:
+
+~~~
+{% include_relative code/03-arrays-and-vectors/vector-clear.cpp %}
+~~~
+{: .language-cpp}
+
+~~~
+$ g++ --std=c++17 -Wall vector-clear.cpp -o vector-clear
+$ ./vector-clear
+Vector initial size is 5
+After a clear() the vector size is 0
+~~~
+{: .language-bash}
+
+> ## EXERCISE FOR VECTORS EXTENSION HERE
+>
+> Blah blah blah
+{: .challenge}
 > ## How vector storage works in C++
 >
 > It's useful to know they way in which a vector works in C++ so you understand
-> how to use it most effectively...
+> how to use it most effectively. Vectors are guaranteed in C++ to occupy
+> contiguous memory, which means that processing a vector's elements one
+> after another is usually rather efficient on modern CPUs.
+>
+> However, that does mean that if elements are inserted at the beginning or
+> in the middle of a vector then all the elements after it have to be moved,
+> which is slower. The advice is always try to fill up vectors at the end!
+>
+> As a vector's size is mutable the library will usually allocate some more space
+> for the vector elements than are currently used. If there is spare space in the
+> underlying allocation then `push_back()` will be very quick. However, when the
+> underlying storage is exhausted the library has to reallocate memory in order
+> to add a new element. Roughly this process is:
+>
+> 1. Call to `push_back()`
+> 2. Realise that the current storage if full.
+> 3. Allocate a new, larger, storage block.
+> 4. Copy each element in turn from the old block to the new one.
+> 5. Add the final, new, element.
+> 6. Free the old storage.
+>
+> This is slow, and gets slower as the vector grows in size. To offset this
+> problem, use the `reserve(N)` method of a vector that will tell the library
+> to pre-allocate enough space for `N` elements in advance. e.g.,
+>
+> `vector<double> v;`
+> `v.reserve(1000000);`
+> `for (unsigned int i=0; i<1000000; ++i) v.push_back(i);`
+>
+> will avoid a lot of unnecessary reallocations and copying compared to the same
+> code without the `reserve()` call.
 {: .callout}
 
 {% include links.md %}
