@@ -40,6 +40,9 @@ You can also include from a string to a string:
 ~~~
 {: .language-python}
 
+{% include includecpplines filename='code/hello.cpp' start=4 stop=7 %}
+
+
 > ## Disabling all of this
 > If we decide against using partial includes as above or find a better solution
 > please remove `includelines` and `includemethods` from the `_includes`

@@ -1,0 +1,19 @@
+<div class="language-cpp highlighter-rouge" style="margin-bottom: 5px">
+{% highlight cpp %}
+{%- capture filecontent -%}
+{%- include_relative {{include.filename}} -%}
+{%- endcapture -%}
+{% capture newline %}
+{% endcapture %}
+{%- assign lines = filecontent | newline_to_br | split: '<br />' -%}
+{%- for iline in (1..lines.size) -%}
+{%- if iline >= {{include.start}} and iline <= {{include.stop}} -%}
+{{lines[iline] | rstrip | strip_newlines }}
+{%- endif -%}
+{%- if iline >= {{include.start}} and iline < {{include.stop}} -%}
+{{newline}}
+{%- endif -%}
+{%- endfor -%}
+{% endhighlight %}
+</div>
+<div style="text-align: center"><a href="https://github.com/hsf-training/hsf-training-cpp-webpage/blob/gh-pages/_episodes/{{include.filename}}">Get the full file: {{include.filename}}</a></div>
