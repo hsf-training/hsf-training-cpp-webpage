@@ -24,6 +24,18 @@ Yet, there are more and more situations where you can ask the compiler to infer 
 
 There is a drawback : when going above a threshold, which is rather subjective, you do not know any more which variable has which type, and the code readability is damaged.
 
+# Old school type inference for function templates
+
+When one call a function template, the compiler will consider the arguments given to the function, and can deduce the type parameters of the template. This is the first form of type inference introduced in C++. In the example below, the compiler will deduce that within `main`, for the call to `sum`, `Num` should deduced to be `int`.
+
+{% include includecpp filename='code/TypeInference/function-template-inference.cpp' highlight='cpp' %}
+
+# Type inference for class templates
+
+Type inference is now also available for classes. Below, notice how the compiler is able to deduce the type of `col` in `main`.
+
+{% include includecpp filename='code/TypeInference/class-template-inference.cpp' highlight='cpp' %}
+
 # New `auto` keyword, when initializing a variable
 
 It is recommended to give an initial value to any variabe you declare. If the type of the variable is the same as the one of the initial value, do not repeat the type : use `auto` instead.
@@ -76,4 +88,4 @@ Logically enough, we should be able, soon, to use `auto` for function arguments.
 
 {% include includecpp filename='code/TypeInference/auto-arguments.cpp' highlight='cpp' %}
 
-If you look at the final implementation of `accumulate` above, you will probably agree that too much `auto` makes the code probably more generic, but also certainly less readable.
+If you look at the final implementation of `accumulate` above, you will probably agree that too much `auto` makes the code probably more generic, but also less readable.
