@@ -101,26 +101,19 @@ Alright, let's get started then... using your editor let's write the
 canonical starting program in C++, the venerable *hello, world*.
 
 ~~~
-#include <iostream>
-
-using namespace std;
-
-int main() {
-    cout << "hello, world" << endl;
-    return 0;
-}
+{% include_relative code/hello.cpp %}
 ~~~
 {: .language-cpp}
 
 Don't worry about the pieces of the code here that you don't understand yet - by the end of the module
 you'll know them all.
 
-Save this file as `hello.cc`.
+Save this file as `hello.cpp`.
 
 Now, open a terminal on your system and let's compile this program and run it:
 
 ~~~
-$ g++ -std=c++17 hello.cc -o hello
+$ g++ -std=c++17 hello.cpp -o hello
 $ ./hello
 hello, world
 $

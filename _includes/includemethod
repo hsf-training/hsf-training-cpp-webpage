@@ -1,0 +1,20 @@
+{%- capture filecontent -%}
+{%- include_relative {{include.filename}} -%}
+{%- endcapture -%}
+{% capture newline %}
+{% endcapture %}
+{%- assign lines = filecontent | newline_to_br | split: '<br />' -%}
+{%- assign includethis = false -%}
+{%- for line in lines -%}
+  {%- if line contains {{include.startstring}} -%}
+    {%- assign includethis = true -%}
+  {%- endif -%}
+  {%- if includethis -%}
+    {%- if line contains {{include.stopstring}} -%}
+      {%- assign includethis = false -%}
+      {{line | rstrip | strip_newlines}}
+    {%- else -%}
+      {{line | rstrip | strip_newlines}}{{newline}}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}

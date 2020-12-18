@@ -1,0 +1,41 @@
+{
+  "files": [
+    "README.md",
+    "_includes/authors.html"
+  ],
+  "projectName": "hsf-training-cpp-webpage",
+  "projectOwner": "hsf-training",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributors": [
+    {
+      "login": "chavid",
+      "name": "David Chamont",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4421289?v=4",
+      "profile": "https://github.com/chavid",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "graeme-a-stewart",
+      "name": "Graeme A Stewart",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8511620?v=4",
+      "profile": "https://github.com/graeme-a-stewart",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "StephenSwat",
+      "name": "Stephen Nicholas Swatman",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1165820?v=4",
+      "profile": "https://github.com/StephenSwat",
+      "contributions": [
+        "content"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

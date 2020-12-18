@@ -11,7 +11,8 @@ FIXME: home page introduction
 
 > ## Prerequisites
 >
-> FIXME
+> This lesson is NOT for complete programming beginners.
+> It should NOT be the first programming language you learn.
 {: .prereq}
 
 {% include curriculum.html %}

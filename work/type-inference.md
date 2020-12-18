@@ -171,9 +171,11 @@ int main()
 ~~~
 {: .language-cpp}
 
+If you want to preserve the possible `const` and/or `&` from the initial value, use `decltype` instead of `auto`.
+
 # Willingly adding `const` and/or `&`
 
-You sometimes should add `const` and/or `&` to the deduced type. For example, if you want to modifiy the elements of some collection. Below, notice the `auto & elem`.
+On the contrary, you must sometimes add `const` and/or `&` to a deduced type which lacks those modifiers. For example, if you want to modify the elements of some collection. In the example below, notice the `auto & elem`.
 
 ~~~
 #include <iostream>
