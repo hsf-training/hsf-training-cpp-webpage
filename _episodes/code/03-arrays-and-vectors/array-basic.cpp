@@ -1,14 +1,12 @@
 #include <iostream>
 #include <array>
 
-using namespace std;
-
 int main() {
-  array<double, 4> four_vector {2., 3., 4., -10.};
-  cout << "This 4-vector has time component " << four_vector[3] << endl;
+  std::array<double, 4> four_vector {2., 3., 4., -10.};
+  std::cout << "This 4-vector has time component " << four_vector[3] << std::endl;
 
   four_vector[3] = 7.5;
-  cout << "This 4-vector now has time component " << four_vector[3] << endl;
+  std::cout << "This 4-vector now has time component " << four_vector[3] << std::endl;
 
   return 0;
 }
