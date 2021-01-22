@@ -23,7 +23,7 @@ This is a full include:
 
 This is a partial include with line numbers
 
-{% include includecpplines filename='code/hello.cpp' start=4 stop=7 %}
+{% include includecpplines filename='code/hello.cpp' start=3 stop=6 %}
 
 You can also include from a string to a string:
 

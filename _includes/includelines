@@ -3,12 +3,14 @@
 {%- endcapture -%}
 {% capture newline %}
 {% endcapture %}
+{%- assign start = include.start | plus: -1 -%}
+{%- assign stop = include.stop | plus: -1 -%}
 {%- assign lines = filecontent | newline_to_br | split: '<br />' -%}
 {%- for iline in (0..lines.size) -%}
-{%- if iline >= {{include.start}} and iline <= {{include.stop}} -%}
+{%- if iline >= {{start}} and iline <= {{stop}} -%}
 {{lines[iline] | rstrip | strip_newlines }}
 {%- endif -%}
-{%- if iline >= {{include.start}} and iline < {{include.stop}} -%}
+{%- if iline >= {{start}} and iline < {{stop}} -%}
 {{newline}}
 {%- endif -%}
 {%- endfor -%}
