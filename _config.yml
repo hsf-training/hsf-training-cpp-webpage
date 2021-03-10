@@ -97,6 +97,7 @@ exclude:
   - .vendor/
   - vendor/
   - .docker-vendor/
+  - work/
 
 # Turn on built-in syntax highlighting.
 highlighter: rouge
