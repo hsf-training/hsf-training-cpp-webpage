@@ -22,7 +22,7 @@ Yet, there are more and more situations where you can ask the compiler to infer 
 * it avoids to repeat redundant information, sometimes cumbersome and error-prone,
 * it makes easier to replace a type with another, because only the explicit types require to be updated manually.
 
-There is a drawback : when going above a threshold, which is rather subjective, you do not know any more which variable has which type, and the code readability is damaged.
+There is a drawback : when going above a threshold, which is *rather subjective*, you do not know any more which variable pertains to which type, and the code readability is damaged.
 
 # Old school type inference for function templates
 
