@@ -268,7 +268,7 @@ int main() {
   std::cout<< PI<double> <<"\n";
   std::cout<< PI<long double> <<"\n";
 }
- ~~~
+~~~
 {: .language-cpp}
 
  When combined with specialization, this offers another way to define a value depending on the type:
