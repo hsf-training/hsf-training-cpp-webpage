@@ -35,6 +35,17 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "meevans1",
+      "name": "Meirin Oan Evans",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32399892?v=4",
+      "profile": "https://meirinoanevans.wixsite.com/portfolio",
+      "contributions": [
+        "ideas",
+        "infra",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7

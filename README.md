@@ -1,7 +1,7 @@
 # Basic Modern C++
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributing
@@ -39,14 +39,16 @@ the content of the lesson:
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/chavid"><img src="https://avatars2.githubusercontent.com/u/4421289?v=4" width="100px;" alt=""/><br /><sub><b>David Chamont</b></sub></a><br /><a href="#content-chavid" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/graeme-a-stewart"><img src="https://avatars2.githubusercontent.com/u/8511620?v=4" width="100px;" alt=""/><br /><sub><b>Graeme A Stewart</b></sub></a><br /><a href="#content-graeme-a-stewart" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/StephenSwat"><img src="https://avatars3.githubusercontent.com/u/1165820?v=4" width="100px;" alt=""/><br /><sub><b>Stephen Nicholas Swatman</b></sub></a><br /><a href="#content-StephenSwat" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/chavid"><img src="https://avatars2.githubusercontent.com/u/4421289?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Chamont</b></sub></a><br /><a href="#content-chavid" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/graeme-a-stewart"><img src="https://avatars2.githubusercontent.com/u/8511620?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Graeme A Stewart</b></sub></a><br /><a href="#content-graeme-a-stewart" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/StephenSwat"><img src="https://avatars3.githubusercontent.com/u/1165820?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stephen Nicholas Swatman</b></sub></a><br /><a href="#content-StephenSwat" title="Content">🖋</a></td>
+    <td align="center"><a href="https://meirinoanevans.wixsite.com/portfolio"><img src="https://avatars.githubusercontent.com/u/32399892?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Meirin Oan Evans</b></sub></a><br /><a href="#ideas-meevans1" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-meevans1" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/hsf-training/hsf-training-cpp-webpage/commits?author=meevans1" title="Documentation">📖</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 Even more people contributed to the framework, but they are too many to list!
