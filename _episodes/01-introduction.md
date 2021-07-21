@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
 teaching: 10
-exercises: 0
+exercises: 4
 questions:
 - "What is C++?"
 - "When is C++ the right language?"
@@ -95,30 +95,41 @@ However, setting up these is beyond the scope of this tutorial.
 > most platforms (OS X, Windows, Linux).
 {: .discussion}
 
-### My first C++ program
-
-Alright, let's get started then... using your editor let's write the
-canonical starting program in C++, the venerable *hello, world*.
+> ### My first C++ program
+> 
+> Alright, let's get started then... let's write the
+> canonical starting program in C++, the venerable *hello, world*.
 
 ~~~
 {% include_relative code/hello.cpp %}
 ~~~
 {: .language-cpp}
 
+
+
 Don't worry about the pieces of the code here that you don't understand yet - by the end of the module
 you'll know them all.
 
-Save this file as `hello.cpp`.
-
-Now, open a terminal on your system and let's compile this program and run it:
-
-~~~
-$ g++ -std=c++17 hello.cpp -o hello
-$ ./hello
-hello, world
-$
-~~~
-{: .language-bash}
+> #### Exercise
+> 
+> Using your editor, create a file with the above content,
+> and save the file as `hello.cpp`.
+> 
+> Now, open a terminal on your system and let's compile this program and run it:
+>
+> ~~~
+> $ g++ -std=c++17 hello.cpp -o hello
+> $ ./hello
+> ~~~
+> {: .language-bash}
+>
+> > Expected result:
+> > ~~~
+> > hello, world
+> > ~~~
+> > {: .output}
+> 
+{: .challenge}
 
 If you managed to get that to work then you have successfully started your journey
 as a C++ programmer. Well done!
