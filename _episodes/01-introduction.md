@@ -25,9 +25,9 @@ modules in the overall HSF C++ course.
 
 The C++ language [has been around for a long
 time](https://en.wikipedia.org/wiki/C%2B%2B) (since the 1980s). Yet, despite
-it's age C++ is still a very popular language. That's because it has an
+its age, C++ is still a very popular language. That's because it has an
 excellent combination of lower-level features that help to get extremely high
-performance from modern computing hardware and higher level features that help
+performance from modern computing hardware and higher-level features that help
 to abstract the logical structure of the code and manage the overall design
 coherently. In particular, C++ is an extremely popular language for data
 intensive sciences (physics, astronomy, chemistry and engineering). C++ is also
@@ -35,20 +35,19 @@ used (with some extensions) for programming devices like GPUs and is the
 language used for many of the high-performance modules in other languages like
 Python.
 
-All of this makes C++ an excellent language to learn for people who need to
-of get maximum performance for their code. And that's why we wrote this
+All of this makes C++ an excellent language to learn for people who need to get maximum performance for their code. And that's why we wrote this
 course!
 
 > ## C++ in this course
-> 
-> Over it's lifetime C++ has evolved a lot from the original versions that
+>
+> Over its lifetime C++ has evolved a lot from the original versions that
 > provided some extensions on top of the C programming language and it has been
-> though numerous revisions and extensions (you might see these referred to as
+> through numerous revisions and extensions (you might see these referred to as
 > C++98, C++11, C++14, etc.). In this course we'll consider all of these old
-> revisions uninteresting for the modern student and we'll dive right in to
+> revisions uninteresting for the modern student and we'll dive right into
 > teaching you modern C++ programming and best practice.
 >
-> However, to be precise, here we shall base the course on the C++17 standard. 
+> However, to be precise, here we shall base the course on the C++17 standard.
 > Occasionally we may point out places where this standard differs significantly
 > from earlier versions, but this is really only to help you where you might
 > have to look at older code.
@@ -63,7 +62,6 @@ Written C++ *source code* describes what we want our program to do, but it isn't
 yet in a form that the CPU can do anything with. The compiler makes the translation
 from one form to another for us and it outputs *binary code* that our
 computer can then execute.
-
 
 > ## A compiler for this course
 >
@@ -133,6 +131,7 @@ Here are some useful resources for C++ programmers:
 | Resource | Link | Description |
 |----------|------|-------------|
 | Cpp Reference | <https://en.cppreference.com/w/> | Essential reference to the C++ standard and standard library |
-| C++ Standards | <https://isocpp.org/> | The C++ Standards Organisaion, but in itself a great source of resources about C++ |
+| C++ Standards | <https://isocpp.org/> | The C++ Standards Organisation, but in itself a great source of resources about C++ |
+| C++ Core Guidelines | <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines> | A set of guidelines for using C++ well (living document) |
 
 {% include links.md %}
