@@ -42,8 +42,7 @@ class Vector {
 {: .language-cpp}
 
 ## Template use
-
-Wherever one call such template, he must clarify the lacking types and values. The compilation of the resulting *template instance* is finalized on-the-fly:
+Wherever one calls such a template, one must clarify the lacking types and values. The compilation of the resulting *template instance* is finalized on-the-fly:
 
 ~~~
 Vector<int,2> v = { 2*2*2, -3*3 } ;
