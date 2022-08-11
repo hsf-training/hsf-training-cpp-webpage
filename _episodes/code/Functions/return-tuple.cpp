@@ -17,10 +17,10 @@ std::tuple<double,double,double> analyse( const std::vector<double> & data )
 int main()
  {
   std::vector<double> data = { 1., 2., 3., 4., 5., 6. } ;
-  
+
   double min, max, mean ;
   std::tie(min,max,mean) = analyse(data) ;
-  
+
   std::cout << "min : " << min << std::endl ;
   std::cout << "max : " << max << std::endl ;
   std::cout << "mean: " << mean << std::endl ;

@@ -66,13 +66,13 @@ Each time the function is called, the value given as argument is duplicated with
 
 ## By reference
 
-If you want the function to modify the original value, you must declare the argument as a reference (postfix with `&`). 
+If you want the function to modify the original value, you must declare the argument as a reference (postfix with `&`).
 
 {% include includecpplines filename='code/Functions/arg-by-reference.cpp' start=3 stop=8 %}
 
 ## By constant reference
 
-If you do want the function to modify the original value, but you would like to avoid the cost of the copy, you can declare the argument as a constant reference (prefix with `const` and postfix with `&`). 
+If you do want the function to modify the original value, but you would like to avoid the cost of the copy, you can declare the argument as a constant reference (prefix with `const` and postfix with `&`).
 
 {% include includecpplines filename='code/Functions/arg-by-const-reference.cpp' start=9 stop=16 %}
 
@@ -94,7 +94,7 @@ NEVER return a reference, unless you are a C++ great master !
 
 ## Returning a composite result
 
-Even if you have multiple results, it is more and more easy to return them all together, using a `std::tuple`. 
+Even if you have multiple results, it is more and more easy to return them all together, using a `std::tuple`.
 
 {% include includecpplines filename='code/Functions/return-tuple.cpp' start=4 stop=28 %}
 

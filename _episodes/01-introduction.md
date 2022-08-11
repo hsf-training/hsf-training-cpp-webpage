@@ -40,7 +40,7 @@ of get maximum performance for their code. And that's why we wrote this
 course!
 
 > ## C++ in this course
-> 
+>
 > Over it's lifetime C++ has evolved a lot from the original versions that
 > provided some extensions on top of the C programming language and it has been
 > though numerous revisions and extensions (you might see these referred to as
@@ -48,7 +48,7 @@ course!
 > revisions uninteresting for the modern student and we'll dive right in to
 > teaching you modern C++ programming and best practice.
 >
-> However, to be precise, here we shall base the course on the C++17 standard. 
+> However, to be precise, here we shall base the course on the C++17 standard.
 > Occasionally we may point out places where this standard differs significantly
 > from earlier versions, but this is really only to help you where you might
 > have to look at older code.
