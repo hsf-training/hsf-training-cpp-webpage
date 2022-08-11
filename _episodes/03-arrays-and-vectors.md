@@ -84,14 +84,14 @@ Note that arrays are always a fixed size in C++.
 > As we saw, array indexes run from `0` to `N-1` for an array of size `N`.
 > If you accidentally try to access a value outside of this range then
 > the results are *undefined behavior* - you're program might crash,
-> or worse it might silently just produce wrong answers. So this is 
+> or worse it might silently just produce wrong answers. So this is
 > something to be very careful of.
 >
 > Arrays also support an access method called `at` which will check that
 > a valid data element is being accessed:
 >
 > `four_vector.at(3)`
-> 
+>
 > will access the third element, but will fail (throwing an exception - more on them latter) if the
 > third element wasn't valid.
 >
@@ -164,7 +164,7 @@ Vector now has 3 elements; and the last value is 3.9
 ~~~
 {: .language-bash}
 
-If you need to add an element to an arbitrary position in a vector then you can use the 
+If you need to add an element to an arbitrary position in a vector then you can use the
 `insert()` method:
 
 ~~~

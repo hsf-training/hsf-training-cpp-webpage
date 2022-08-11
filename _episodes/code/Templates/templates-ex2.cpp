@@ -30,7 +30,7 @@ bool equal( real v1, real v2 ) {
 
 int main() {
   real val = 1.0, tenth = val/10, sum = 0.0 ;
-  for ( int i = 0 ; i<10 ; ++i ) { 
+  for ( int i = 0 ; i<10 ; ++i ) {
     sum += tenth ;
   }
   if (equal(val,sum)) {

@@ -51,7 +51,7 @@ int collatz(int a) {
         return collatz(a/2);
     } else {
         return collatz(3*a+1);
-    }    
+    }
 }
 ~~~
 {: .language-cpp}
@@ -173,7 +173,7 @@ else {
 > }
 > ~~~
 > {: .language-cpp}
-> 
+>
 > > ## Solution
 > > When we compile the code, we will see a warning for each of the non-terminated cases.  When we run the code, we will see three printouts, saying that a is 3, a is 4, and a is not 1, 3, or 4.
 > {: .solution}
@@ -335,10 +335,10 @@ while (1) { // naively, the loop will never finish (unless a break or return is 
 > ~~~
 > {: .language-cpp}
 > Your collaborator tells you that they are sure the function works because they tested it and no matter what order they put the numbers in, it always found that the max was 2.
-> 
+>
 >
 > Are they correct?  Or are there other cases you should test before being so sure?
-> 
+>
 > > ## Solution
 > > You should test a few more cases.  The bare minimum should be to test the function enough so that each line executes, and in the test cases provided `a` is always less than `b` so the line `else return a;` is never executed.  When using control flow with much larger blocks of code, it becomes dangerous to push code to some shared repository if it has not been tested.
 > >

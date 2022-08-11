@@ -30,4 +30,3 @@ You can also include from a string to a string:
 {% include includecppmethod filename='code/hello.cpp' startstring='main()' stopstring='}' %}
 
 {% include links.md %}
-

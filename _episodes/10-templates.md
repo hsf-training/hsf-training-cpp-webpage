@@ -90,26 +90,26 @@ Vector<double,30> v5 ;
 {: .language-cpp}
 
 > ## Exercise
-> 
+>
 > Consider the following example:
 >
 > ~~~
 > #include <iostream>
-> 
+>
 > template<typename  T, int sz>
 > class Vector {
 >   public:
 >     T data[sz] ;
 > };
-> 
+>
 > template<int sz>
 > using VectorDouble = Vector<double,sz> ;
-> 
+>
 > template<typename T>
 > using Vector3 = Vector<T,3> ;
-> 
+>
 > // COMPLETE HERE
-> 
+>
 > int main() {
 >   Vector3<int> v1 = { 6*7, 3*14, 2*21 } ;
 >   VectorDouble<2> v2 = { 3.14, 1.62};
@@ -118,11 +118,11 @@ Vector<double,30> v5 ;
 > }
 > ~~~
 > {: .language-cpp}
-> 
+>
 > Instructions:
 > 1. add the lacking `display()` function, which print the values of the input `Vector` onto `std::cout`, one after the other,
 > 2. the expected output is:
-> 
+>
 > ~~~
 > 42 42 42
 > 3.14 1.62
@@ -131,22 +131,22 @@ Vector<double,30> v5 ;
 {: .challenge}
 
 > ## Solution
-> 
+>
 > ~~~
 > #include <iostream>
-> 
+>
 > template<typename  T, int sz>
 > class Vector {
 >   public:
 >     T data[sz] ;
 > };
-> 
+>
 > template<int sz>
 > using VectorDouble = Vector<double,sz> ;
-> 
+>
 > template<typename T>
 > using Vector3 = Vector<T,3> ;
-> 
+>
 > template<typename  T, int sz>
 > void display( const Vector<T,sz> & v ) {
 >   for ( int i = 0 ; i < sz ; ++i ) {
@@ -154,7 +154,7 @@ Vector<double,30> v5 ;
 >   }
 >   std::cout << std::endl ;
 > };
-> 
+>
 > int main() {
 >   Vector3<int> v1 = { 6*7, 3*14, 2*21 } ;
 >   VectorDouble<2> v2 = { 3.14, 1.62};
@@ -200,7 +200,7 @@ From the point of view of the client code, this is a single template with some s
 ~~~
 int main() {
   double val = 1.0, tenth = val/10, sum = 0.0 ;
-  for ( int i = 0 ; i<10 ; ++i ) { 
+  for ( int i = 0 ; i<10 ; ++i ) {
     sum += tenth ;
   }
   if (equal(val,sum)) {
@@ -295,43 +295,43 @@ int main() {
 As compared with the previous example, this is a lot more simple, from the syntax point of view. But the expression `EPSILON<T>` is valid for any `T`, for example `int`, and one must give a default value to the default non-specialized implementation of the variable template (here `0`).
 
 > ## Exercise
-> 
-> In the program below, if one replace `double` with `float`, the value `1.0` is not any more equivalent to the sum of ten values `0.1`, because the `EPSILON` value (`1.e-13`) is too small for `float` precision. 
-> 
+>
+> In the program below, if one replace `double` with `float`, the value `1.0` is not any more equivalent to the sum of ten values `0.1`, because the `EPSILON` value (`1.e-13`) is too small for `float` precision.
+>
 > ~~~
 > #include <iostream>
-> 
+>
 > template<typename  T>
 > T abs( T val ) {
 >   const T ZERO = 0 ;
 >   if ( val > ZERO ) { return val ; }
 >   else { return (-val) ; }
 > }
-> 
+>
 > template<typename T>
 > bool equal( T v1, T v2 ) {
 >   return (v1==v2) ;
 > }
-> 
+>
 > // COMPLETE HERE: EPSILON definition for float and double
-> 
+>
 > // REPLACE BELOW: the single specialization with two
 > // specializations, one for float, and the other for double
-> 
+>
 > using real = double ;
-> 
+>
 > template<>
 > bool equal( real v1, real v2 ) {
 >   const real EPSILON = 1e-13 ;
 >   return (abs(v1-v2)<EPSILON<double>) ;
 > }
-> 
+>
 > // REPLACE BELOW: real by float, so to validate
 > // that the equality is now true also for float
-> 
+>
 > int main() {
 >   real val = 1.0, tenth = val/10, sum = 0.0 ;
->   for ( int i = 0 ; i<10 ; ++i ) { 
+>   for ( int i = 0 ; i<10 ; ++i ) {
 >     sum += tenth ;
 >   }
 >   if (equal(val,sum)) {
@@ -343,7 +343,7 @@ As compared with the previous example, this is a lot more simple, from the synta
 > }
 > ~~~
 > {: .language-cpp}
-> 
+>
 > Instructions:
 > 1. replace `real`, and check the result,
 > 2. inject into the program a definition of `EPSILON` which would be `1e-13` for `double` computation, and `1e-6` for `float` computation,
@@ -352,44 +352,44 @@ As compared with the previous example, this is a lot more simple, from the synta
 {: .challenge}
 
 > ## Solution
-> 
+>
 > ~~~
 > #include <iostream>
-> 
+>
 > template<typename  T>
 > T abs( T val ) {
 >   const T ZERO = 0 ;
 >   if ( val > ZERO ) { return val ; }
 >   else { return (-val) ; }
 > }
-> 
+>
 > template<typename T>
 > const T EPSILON =0;
-> 
+>
 > template<>
 > const float EPSILON<float> = 1e-6;
-> 
+>
 > template<>
 > const double EPSILON<double> = 1e-13;
-> 
+>
 > template<typename T>
 > bool equal( T v1, T v2 ) {
 >   return (v1==v2) ;
 > }
-> 
+>
 > template<>
 > bool equal( float v1, float v2 ) {
 >   return (abs(v1-v2)<EPSILON<float>) ;
 > }
-> 
+>
 > template<>
 > bool equal( double v1, double v2 ) {
 >   return (abs(v1-v2)<EPSILON<double>) ;
 > }
-> 
+>
 > int main() {
 >   float val = 1.0, tenth = val/10, sum = 0.0 ;
->   for ( int i = 0 ; i<10 ; ++i ) { 
+>   for ( int i = 0 ; i<10 ; ++i ) {
 >     sum += tenth ;
 >   }
 >   if (equal(val,sum)) {
@@ -405,7 +405,7 @@ As compared with the previous example, this is a lot more simple, from the synta
 
 # Few hassles
 
-In real code, you mix templates with other C++ features, and the compiler sometimes fails to understand what you obviously mean... 
+In real code, you mix templates with other C++ features, and the compiler sometimes fails to understand what you obviously mean...
 
 ## Implicit conversions
 
@@ -512,7 +512,7 @@ template<typename Val>
 struct MyContainer
  {
   int size() { return 0 ; } ;
- } ;  
+ } ;
 
 template<typename Val>
 struct MyExtendedContainer : public MyContainer<Val>
